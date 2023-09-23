@@ -33,10 +33,10 @@ namespace FazAcontecerAPI.Services
         public async Task AtualizarAperitivo(Aperitivo existingAperitivo, Aperitivo aperitivo)
         {
             existingAperitivo.Nome = aperitivo.Nome;
-            existingAperitivo.PrecoUnidade = aperitivo.PrecoUnidade;
+            existingAperitivo.Preco_unidade = aperitivo.Preco_unidade;
             existingAperitivo.Quantidade = aperitivo.Quantidade;
             existingAperitivo.Ativo = aperitivo.Ativo;
-            existingAperitivo.DataModificacao = DateTime.Now;
+            existingAperitivo.Data_modificacao = DateTime.Now;
 
             _dbContext.TbAperitivo.Update(existingAperitivo);
             await _dbContext.SaveChangesAsync();

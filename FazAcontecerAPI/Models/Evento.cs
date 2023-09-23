@@ -12,13 +12,13 @@ namespace FazAcontecerAPI.Models
         public string? Nome { get; set; }
 
         [JsonPropertyName("data_evento")]
-        public DateTime DataEvento { get; set; }
+        public DateTime Data_evento { get; set; }
 
         [JsonPropertyName("horario")]
         public DateTime Horario { get; set; }
         
         [JsonPropertyName("local_evento")]
-        public string? LocalEvento { get; set; }
+        public string? Local_evento { get; set; }
 
         [JsonPropertyName("descricao")]
         public string? Descricao { get; set; }
@@ -30,13 +30,64 @@ namespace FazAcontecerAPI.Models
         public decimal Orcamento { get; set; }
 
         [JsonPropertyName("data_final_confirmacao_convite")]
-        public DateTime DataFinalConfirmacaoConvite { get; set; }
+        public DateTime Data_final_confirmacao_convite { get; set; }
 
         [JsonPropertyName("data_criacao")]
-        public DateTime DataCriacao { get; set; }
+        public DateTime Data_criacao { get; set; }
 
         [JsonPropertyName("data_modificacao")]
-        public DateTime DataModificacao { get; set; }
+        public DateTime Data_modificacao { get; set; }
+
+        [JsonPropertyName("ativo")]
+        public bool Ativo { get; set; }
+    }
+
+    public class NovoEvento
+    {
+        [JsonPropertyName("nome")]
+        public string? Nome { get; set; }
+
+        [JsonPropertyName("data_evento")]
+        public DateTime Data_evento { get; set; }
+
+        [JsonPropertyName("horario")]
+        public DateTime Horario { get; set; }
+
+        [JsonPropertyName("local_evento")]
+        public string? Local_evento { get; set; }
+
+        [JsonPropertyName("descricao")]
+        public string? Descricao { get; set; }
+
+        [JsonPropertyName("observacao")]
+        public string? Observacao { get; set; }
+
+        [JsonPropertyName("orcamento")]
+        public decimal Orcamento { get; set; }
+    }
+
+    public class AtualizarEvento
+    {
+        [JsonPropertyName("nome")]
+        public string? Nome { get; set; }
+
+        [JsonPropertyName("data_evento")]
+        public DateTime Data_evento { get; set; }
+
+        [JsonPropertyName("horario")]
+        public DateTime Horario { get; set; }
+
+        [JsonPropertyName("local_evento")]
+        public string? Local_evento { get; set; }
+
+        [JsonPropertyName("descricao")]
+        public string? Descricao { get; set; }
+
+        [JsonPropertyName("observacao")]
+        public string? Observacao { get; set; }
+
+        [JsonPropertyName("orcamento")]
+        public decimal Orcamento { get; set; }
 
         [JsonPropertyName("ativo")]
         public bool Ativo { get; set; }

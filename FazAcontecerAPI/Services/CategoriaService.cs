@@ -34,7 +34,7 @@ namespace FazAcontecerAPI.Services
         {
             existingCategoria.Nome = categoria.Nome;
             existingCategoria.Ativo = categoria.Ativo;
-            existingCategoria.DataModificacao = DateTime.Now;
+            existingCategoria.Data_modificacao = DateTime.Now;
 
             _dbContext.TbCategoria.Update(existingCategoria);
             await _dbContext.SaveChangesAsync();

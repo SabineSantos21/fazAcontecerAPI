@@ -12,9 +12,9 @@ namespace FazAcontecerAPI.Services
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Decoracao>> GetDecoracoes()
+        public async Task<IEnumerable<Decoracao>> GetDecoracoes(int idEvento)
         {
-            return await _dbContext.TbDecoracao.ToListAsync();
+            return await _dbContext.TbDecoracao.Where(d => d.IdEvento == idEvento).ToListAsync();
         }
 
         public async Task<Decoracao?> GetDecoracaoById(int id)
@@ -33,10 +33,10 @@ namespace FazAcontecerAPI.Services
         public async Task AtualizarDecoracao(Decoracao existingDecoracao, Decoracao decoracao)
         {
             existingDecoracao.Nome = decoracao.Nome;
-            existingDecoracao.PrecoUnidade = decoracao.PrecoUnidade;
+            existingDecoracao.Preco_unidade = decoracao.Preco_unidade;
             existingDecoracao.Quantidade = decoracao.Quantidade;
             existingDecoracao.Ativo = decoracao.Ativo;
-            existingDecoracao.DataModificacao = DateTime.Now;
+            existingDecoracao.Data_modificacao = DateTime.Now;
 
             _dbContext.TbDecoracao.Update(existingDecoracao);
             await _dbContext.SaveChangesAsync();

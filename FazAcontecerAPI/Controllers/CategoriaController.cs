@@ -47,9 +47,9 @@ namespace FazAcontecerAPI.Controllers
 
             Categoria categoria = new Categoria();
             categoria.Nome = novaCategoria.Nome;
-            categoria.TipoCategoria = novaCategoria.TipoCategoria;
-            categoria.DataCriacao = DateTime.Now;
-            categoria.DataModificacao = DateTime.Now;
+            categoria.Tipo_categoria = novaCategoria.Tipo_categoria;
+            categoria.Data_criacao = DateTime.Now;
+            categoria.Data_modificacao = DateTime.Now;
             categoria.Ativo = true;
 
             await categoriaService.CriarCategoria(categoria);
@@ -64,7 +64,7 @@ namespace FazAcontecerAPI.Controllers
 
             Categoria categoria = new Categoria();
             categoria.Nome = atualizarCategoria.Nome;
-            categoria.TipoCategoria = atualizarCategoria.TipoCategoria;
+            categoria.Tipo_categoria = atualizarCategoria.Tipo_categoria;
             categoria.Ativo = atualizarCategoria.Ativo;
 
             var existingCategoria = await categoriaService.GetCategoriaById(id);

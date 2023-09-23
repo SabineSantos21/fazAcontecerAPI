@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vQD2nmgqwPnteNEFa6jbN1pylSbvhTb2Oh3QD/E5n9X7+1wTs6QEvSXiaONoY3bSeGEJfpPmi9kHJ/HdvKTJFA==",
+  "dgSpecHash": "kUMRXdjDMkAx42668vDC/xd0sC6vqnpEVx9CCvDbEHj4crlFa/5PoPfKZxTmGXICZHb7U0+tMHihlJqAIykOWg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sabine Freiman\\Source\\Repos\\fazAcontecerAPI\\FazAcontecerAPI\\FazAcontecerAPI.csproj",
+  "projectFilePath": "C:\\Users\\Sabine Freiman\\CatolicaSC\\PAC4\\FazAcontecerAPI\\FazAcontecerAPI\\FazAcontecerAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sabine Freiman\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.18\\microsoft.aspnetcore.authentication.jwtbearer.6.0.18.nupkg.sha512",
     "C:\\Users\\Sabine Freiman\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

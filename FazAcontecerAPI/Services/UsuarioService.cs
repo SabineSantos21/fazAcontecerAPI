@@ -34,7 +34,7 @@ namespace FazAcontecerAPI.Services
         {
             existingUsuario.Nome = usuario.Nome;
             existingUsuario.Ativo = usuario.Ativo;
-            existingUsuario.DataModificacao = DateTime.Now;
+            existingUsuario.Data_modificacao = DateTime.Now;
 
             _dbContext.TbUsuario.Update(existingUsuario);
             await _dbContext.SaveChangesAsync();

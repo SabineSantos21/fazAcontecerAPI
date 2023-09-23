@@ -50,8 +50,10 @@ namespace FazAcontecerAPI.Controllers
             convidado.Nome = novoConvidado.Nome;
             convidado.Telefone = novoConvidado.Telefone;
             convidado.Email = novoConvidado.Email;
-            convidado.DataCriacao = DateTime.Now;
-            convidado.DataModificacao = DateTime.Now;
+            convidado.IdEvento = novoConvidado.IdEvento;
+            convidado.Aceitou_convite = true;
+            convidado.Data_criacao = DateTime.Now;
+            convidado.Data_modificacao = DateTime.Now;
             convidado.Ativo = true;
 
             await convidadoService.CriarConvidado(convidado);

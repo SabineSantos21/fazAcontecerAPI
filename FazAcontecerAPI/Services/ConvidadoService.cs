@@ -37,12 +37,12 @@ namespace FazAcontecerAPI.Services
         public async Task AtualizarConvidado(Convidado existingConvidado, Convidado convidado)
         {
             existingConvidado.Nome = convidado.Nome;
-            existingConvidado.AceitouConvite = convidado.AceitouConvite;
+            existingConvidado.Aceitou_convite = convidado.Aceitou_convite;
             existingConvidado.Ativo = convidado.Ativo;
             existingConvidado.Email = convidado.Email;
             existingConvidado.Telefone = convidado.Telefone;
             existingConvidado.Ativo = convidado.Ativo;
-            existingConvidado.DataModificacao = DateTime.Now;
+            existingConvidado.Data_modificacao = DateTime.Now;
 
             _dbContext.TbConvidado.Update(existingConvidado);
             await _dbContext.SaveChangesAsync();

@@ -12,13 +12,13 @@ namespace FazAcontecerAPI.Models
         public string? Nome { get; set; }
 
         [JsonPropertyName("tipo_categoria")]
-        public int TipoCategoria { get; set; }
+        public int Tipo_categoria { get; set; }
 
         [JsonPropertyName("data_criacao")]
-        public DateTime DataCriacao { get; set; }
+        public DateTime Data_criacao { get; set; }
 
         [JsonPropertyName("data_modificacao")]
-        public DateTime DataModificacao { get; set; }
+        public DateTime Data_modificacao { get; set; }
 
         [JsonPropertyName("ativo")]
         public bool Ativo { get; set; }
@@ -30,7 +30,7 @@ namespace FazAcontecerAPI.Models
         public string? Nome { get; set; }
 
         [JsonPropertyName("tipo_categoria")]
-        public int TipoCategoria { get; set; }
+        public int Tipo_categoria { get; set; }
     }
 
     public class AtualizarCategoria
@@ -39,7 +39,7 @@ namespace FazAcontecerAPI.Models
         public string? Nome { get; set; }
 
         [JsonPropertyName("tipo_categoria")]
-        public int TipoCategoria { get; set; }
+        public int Tipo_categoria { get; set; }
 
         [JsonPropertyName("ativo")]
         public bool Ativo { get; set; }

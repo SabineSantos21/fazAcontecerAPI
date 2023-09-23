@@ -47,10 +47,12 @@ namespace FazAcontecerAPI.Controllers
 
             Aperitivo aperitivo = new Aperitivo();
             aperitivo.Nome = novoAperitivo.Nome;
+            aperitivo.Preco_unidade = novoAperitivo.Preco_unidade;
             aperitivo.Quantidade = novoAperitivo.Quantidade;
             aperitivo.IdCategoria = novoAperitivo.IdCategoria;
-            aperitivo.DataCriacao = DateTime.Now;
-            aperitivo.DataModificacao = DateTime.Now;
+            aperitivo.IdEvento = novoAperitivo.IdEvento;
+            aperitivo.Data_criacao = DateTime.Now;
+            aperitivo.Data_modificacao = DateTime.Now;
             aperitivo.Ativo = true;
 
             await aperitivoService.CriarAperitivo(aperitivo);
@@ -65,7 +67,7 @@ namespace FazAcontecerAPI.Controllers
 
             Aperitivo aperitivo = new Aperitivo();
             aperitivo.Nome = atualizarAperitivo.Nome;
-            aperitivo.PrecoUnidade = atualizarAperitivo.PrecoUnidade;
+            aperitivo.Preco_unidade = atualizarAperitivo.Preco_unidade;
             aperitivo.Quantidade = atualizarAperitivo.Quantidade;
             aperitivo.IdCategoria = atualizarAperitivo.IdCategoria;
             aperitivo.Ativo = atualizarAperitivo.Ativo;

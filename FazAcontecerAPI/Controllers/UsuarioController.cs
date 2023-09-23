@@ -50,8 +50,8 @@ namespace FazAcontecerAPI.Controllers
             usuario.Nome = novoUsuario.Nome;
             usuario.Email = novoUsuario.Email;
             usuario.Senha = novoUsuario.Senha;
-            usuario.DataCriacao = DateTime.Now;
-            usuario.DataModificacao = DateTime.Now;
+            usuario.Data_criacao = DateTime.Now;
+            usuario.Data_modificacao = DateTime.Now;
             usuario.Ativo = true;
 
             await usuarioService.CriarUsuario(usuario);
