@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace FazAcontecerAPI.Models
@@ -25,6 +26,10 @@ namespace FazAcontecerAPI.Models
 
         [JsonPropertyName("ativo")]
         public bool Ativo { get; set; }
+
+        [NotMapped]
+        [JsonPropertyName("token")]
+        public string? Token { get; set; }
     }
 
     public class NovoUsuario

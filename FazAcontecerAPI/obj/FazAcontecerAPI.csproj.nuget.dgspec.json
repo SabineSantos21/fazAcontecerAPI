@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sabine Freiman\\CatolicaSC\\PAC4\\FazAcontecerAPI\\FazAcontecerAPI\\FazAcontecerAPI.csproj": {}
+    "C:\\Users\\Sabine Freiman\\Source\\Repos\\fazAcontecerAPI\\FazAcontecerAPI\\FazAcontecerAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sabine Freiman\\CatolicaSC\\PAC4\\FazAcontecerAPI\\FazAcontecerAPI\\FazAcontecerAPI.csproj": {
+    "C:\\Users\\Sabine Freiman\\Source\\Repos\\fazAcontecerAPI\\FazAcontecerAPI\\FazAcontecerAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sabine Freiman\\CatolicaSC\\PAC4\\FazAcontecerAPI\\FazAcontecerAPI\\FazAcontecerAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Sabine Freiman\\Source\\Repos\\fazAcontecerAPI\\FazAcontecerAPI\\FazAcontecerAPI.csproj",
         "projectName": "FazAcontecerAPI",
-        "projectPath": "C:\\Users\\Sabine Freiman\\CatolicaSC\\PAC4\\FazAcontecerAPI\\FazAcontecerAPI\\FazAcontecerAPI.csproj",
+        "projectPath": "C:\\Users\\Sabine Freiman\\Source\\Repos\\fazAcontecerAPI\\FazAcontecerAPI\\FazAcontecerAPI.csproj",
         "packagesPath": "C:\\Users\\Sabine Freiman\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sabine Freiman\\CatolicaSC\\PAC4\\FazAcontecerAPI\\FazAcontecerAPI\\obj\\",
+        "outputPath": "C:\\Users\\Sabine Freiman\\Source\\Repos\\fazAcontecerAPI\\FazAcontecerAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

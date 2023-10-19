@@ -1,4 +1,5 @@
 using FazAcontecerAPI;
+using FazAcontecerAPI.Models;
 using FazAcontecerAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,18 +17,23 @@ namespace FazAcontecerAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login()
+        public IActionResult Login(Login login)
         {
             LoginService loginService = new LoginService(_dbContext);
+            
+            Usuario? usuario = loginService.ValidarCredenciais(login.Email, login.Senha);
 
-            //if (loginService.ValidarCredenciais(login.Email, login.Senha) != null)
-            //{
-            //    var token = loginService.GerarTokenJWT(login.Email);
-            //    return Ok(new { token });
-            //}
 
-            //return Unauthorized();
-            return Ok();
+            if (usuario != null)
+            {
+                usuario.Token = loginService.GerarTokenJWT(login.Email);
+                
+                return Ok(usuario);
+            } 
+            else
+            {
+                return Unauthorized();
+            }
         }
     }
 }
