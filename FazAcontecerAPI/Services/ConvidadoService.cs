@@ -43,7 +43,6 @@ namespace FazAcontecerAPI.Services
             existingConvidado.Telefone = convidado.Telefone;
             existingConvidado.Ativo = convidado.Ativo;
             existingConvidado.Data_modificacao = DateTime.Now;
-            existingConvidado.Aceitou_convite = convidado.Aceitou_convite;
 
             _dbContext.TbConvidado.Update(existingConvidado);
             await _dbContext.SaveChangesAsync();
