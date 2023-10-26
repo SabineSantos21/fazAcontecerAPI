@@ -16,9 +16,9 @@ namespace FazAcontecerAPI.Services
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Convidado>> GetConvidados()
+        public async Task<IEnumerable<Convidado>> GetConvidados(int idEvento)
         {
-            return await _dbContext.TbConvidado.ToListAsync();
+            return await _dbContext.TbConvidado.Where(c => c.IdEvento == idEvento).ToListAsync();
         }
 
         public async Task<Convidado?> GetConvidadoById(int id)
@@ -43,6 +43,7 @@ namespace FazAcontecerAPI.Services
             existingConvidado.Telefone = convidado.Telefone;
             existingConvidado.Ativo = convidado.Ativo;
             existingConvidado.Data_modificacao = DateTime.Now;
+            existingConvidado.Aceitou_convite = convidado.Aceitou_convite;
 
             _dbContext.TbConvidado.Update(existingConvidado);
             await _dbContext.SaveChangesAsync();

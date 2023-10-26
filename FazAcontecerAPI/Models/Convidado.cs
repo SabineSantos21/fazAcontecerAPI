@@ -61,5 +61,8 @@ namespace FazAcontecerAPI.Models
 
         [JsonPropertyName("ativo")]
         public bool Ativo { get; set; }
+
+        [JsonPropertyName("aceitou_convite")]
+        public bool Aceitou_convite { get; set; }
     }
 }

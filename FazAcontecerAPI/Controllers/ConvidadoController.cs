@@ -16,12 +16,12 @@ namespace FazAcontecerAPI.Controllers
             _dbContext = dbContext;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Convidado>>> GetConvidados()
+        [HttpGet("idEvento")]
+        public async Task<ActionResult<IEnumerable<Convidado>>> GetConvidados(int idEvento)
         {
             ConvidadoService convidadoService = new ConvidadoService(_dbContext);
 
-            IEnumerable<Convidado> convidados = await convidadoService.GetConvidados();
+            IEnumerable<Convidado> convidados = await convidadoService.GetConvidados(idEvento);
 
             return Ok(convidados);
         }
@@ -71,6 +71,7 @@ namespace FazAcontecerAPI.Controllers
             convidado.Telefone = atualizarConvidado.Telefone;
             convidado.Email = atualizarConvidado.Email;
             convidado.Ativo = atualizarConvidado.Ativo;
+            convidado.Aceitou_convite = atualizarConvidado.Aceitou_convite;
 
             var existingConvidado = await convidadoService.GetConvidadoById(id);
 
