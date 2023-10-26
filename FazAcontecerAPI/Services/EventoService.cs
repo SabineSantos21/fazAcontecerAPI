@@ -12,9 +12,9 @@ namespace FazAcontecerAPI.Services
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Evento>> GetEventos()
+        public async Task<IEnumerable<Evento>> GetEventos(int idUsuario)
         {
-            return await _dbContext.TbEvento.ToListAsync();
+            return await _dbContext.TbEvento.Where(e => e.id_usuario == idUsuario).ToListAsync();
         }
 
         public async Task<Evento?> GetEventoById(int id)

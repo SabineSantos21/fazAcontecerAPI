@@ -40,6 +40,9 @@ namespace FazAcontecerAPI.Models
 
         [JsonPropertyName("ativo")]
         public bool Ativo { get; set; }
+
+        [JsonPropertyName("id_usuario")]
+        public int id_usuario { get; set; }
     }
 
     public class NovoEvento
@@ -64,6 +67,9 @@ namespace FazAcontecerAPI.Models
 
         [JsonPropertyName("orcamento")]
         public decimal Orcamento { get; set; }
+
+        [JsonPropertyName("id_usuario")]
+        public int Id_usuario { get; set; }
     }
 
     public class AtualizarEvento

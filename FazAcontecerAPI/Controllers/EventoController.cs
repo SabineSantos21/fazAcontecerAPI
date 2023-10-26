@@ -17,11 +17,11 @@ namespace FazAcontecerAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Evento>>> GetEventos()
+        public async Task<ActionResult<IEnumerable<Evento>>> GetEventos(int idUsuario)
         {
             EventoService eventoService = new EventoService(_dbContext);
 
-            IEnumerable<Evento> eventos = await eventoService.GetEventos();
+            IEnumerable<Evento> eventos = await eventoService.GetEventos(idUsuario);
 
             return Ok(eventos);
         }
@@ -56,6 +56,7 @@ namespace FazAcontecerAPI.Controllers
             evento.Data_criacao = DateTime.Now;
             evento.Data_modificacao = DateTime.Now;
             evento.Ativo = true;
+            evento.id_usuario = novoEvento.Id_usuario;
 
             await eventoService.CriarEvento(evento);
 
