@@ -22,6 +22,11 @@ namespace FazAcontecerAPI.Services
             return await _dbContext.TbCategoria.FirstOrDefaultAsync(p => p.Id == id);
         }
 
+        public async Task<IEnumerable<Categoria>> GetCategoriaByTipo(int tipo)
+        {
+            return await _dbContext.TbCategoria.Where(c => c.Tipo_categoria == tipo).ToListAsync();
+        }
+
         public async Task<Categoria> CriarCategoria(Categoria categoria)
         {
             _dbContext.TbCategoria.Add(categoria);

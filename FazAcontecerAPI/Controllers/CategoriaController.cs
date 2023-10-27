@@ -40,6 +40,16 @@ namespace FazAcontecerAPI.Controllers
             return categoria;
         }
 
+        [HttpGet("Tipo/{tipo}")]
+        public async Task<ActionResult<Categoria>> GetCategoriasPeloTipo(int tipo)
+        {
+            CategoriaService categoriaService = new CategoriaService(_dbContext);
+
+            IEnumerable<Categoria> categorias = await categoriaService.GetCategoriaByTipo(tipo);
+
+            return Ok(categorias);
+        }
+
         [HttpPost]
         public async Task<ActionResult> CriarCategoria(NovaCategoria novaCategoria)
         {
