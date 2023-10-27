@@ -16,7 +16,7 @@ namespace FazAcontecerAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Usuario>>> GetPeritivos(int idEvento)
+        public async Task<ActionResult<IEnumerable<Aperitivo>>> GetAperitivos(int idEvento)
         {
             AperitivoService aperitivoService = new AperitivoService(_dbContext);
 
@@ -54,6 +54,7 @@ namespace FazAcontecerAPI.Controllers
             aperitivo.Data_criacao = DateTime.Now;
             aperitivo.Data_modificacao = DateTime.Now;
             aperitivo.Ativo = true;
+            aperitivo.Check = false;
 
             await aperitivoService.CriarAperitivo(aperitivo);
 
@@ -71,6 +72,7 @@ namespace FazAcontecerAPI.Controllers
             aperitivo.Quantidade = atualizarAperitivo.Quantidade;
             aperitivo.IdCategoria = atualizarAperitivo.IdCategoria;
             aperitivo.Ativo = atualizarAperitivo.Ativo;
+            aperitivo.Check = atualizarAperitivo.Check;
 
             var existingAperitivo = await aperitivoService.GetAperitivoById(id);
 

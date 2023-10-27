@@ -37,6 +37,7 @@ namespace FazAcontecerAPI.Services
             existingAperitivo.Quantidade = aperitivo.Quantidade;
             existingAperitivo.Ativo = aperitivo.Ativo;
             existingAperitivo.Data_modificacao = DateTime.Now;
+            existingAperitivo.Check = aperitivo.Check;
 
             _dbContext.TbAperitivo.Update(existingAperitivo);
             await _dbContext.SaveChangesAsync();

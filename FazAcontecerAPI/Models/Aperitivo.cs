@@ -31,6 +31,9 @@ namespace FazAcontecerAPI.Models
 
         [JsonPropertyName("ativo")]
         public bool Ativo { get; set; }
+
+        [JsonPropertyName("check")]
+        public bool Check { get; set; }
     }
 
     public class NovoAperitivo
@@ -67,5 +70,8 @@ namespace FazAcontecerAPI.Models
 
         [JsonPropertyName("ativo")]
         public bool Ativo { get; set; }
+
+        [JsonPropertyName("check")]
+        public bool Check { get; set; }
     }
 }
