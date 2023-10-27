@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\FazAcontecerAPI",
+    "\\FazAcontecerAPI\\Controllers"
   ],
+  "SelectedNode": "\\FazAcontecerAPI\\Controllers\\AperitivoController.cs",
   "PreviewInSolutionExplorer": false
 }

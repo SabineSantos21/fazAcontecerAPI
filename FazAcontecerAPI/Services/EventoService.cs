@@ -45,5 +45,42 @@ namespace FazAcontecerAPI.Services
             _dbContext.TbEvento.Remove(evento);
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task<RetornarExtratoEvento> CalcularSaldoEvento(int idEvento)
+        {
+            Evento? evento = await GetEventoById(idEvento);
+
+            RetornarExtratoEvento ret = new RetornarExtratoEvento();
+
+            if (evento != null)
+            {
+
+                var saldo = evento.Orcamento;
+
+                AperitivoService aperitivoService = new AperitivoService(_dbContext);
+                List<Aperitivo> aperitivos = aperitivoService.GetAperitivos(idEvento).Result.Where(a => a.Check == true).ToList();
+
+                foreach (var aperitivo in aperitivos)
+                {
+                    saldo -= (aperitivo.Preco_unidade * aperitivo.Quantidade);
+                }
+
+                DecoracaoService decoracaoService = new DecoracaoService(_dbContext);
+                List<Decoracao> decoracoes = decoracaoService.GetDecoracoes(idEvento).Result.Where(d => d.Check == true).ToList();
+
+                foreach (var decoracao in decoracoes)
+                {
+                    saldo -= (decoracao.Preco_unidade * decoracao.Quantidade);
+                }
+
+                ret.Saldo = saldo;
+                ret.Aperitivos = aperitivos;
+                ret.Decoracoes = decoracoes;
+
+                return ret;
+            }
+
+            return ret;
+        }
     }
 }

@@ -106,5 +106,15 @@ namespace FazAcontecerAPI.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("CalcularSaldo/{idEvento}")]
+        public async Task<ActionResult<RetornarExtratoEvento>> CalcularSaldo(int idEvento)
+        {
+            EventoService eventoService = new EventoService(_dbContext);
+
+            RetornarExtratoEvento retornarExtratoEvento = await eventoService.CalcularSaldoEvento(idEvento);
+
+            return retornarExtratoEvento;
+        }
     }
 }
