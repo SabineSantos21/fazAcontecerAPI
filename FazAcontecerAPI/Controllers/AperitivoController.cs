@@ -40,6 +40,16 @@ namespace FazAcontecerAPI.Controllers
             return aperitivo;
         }
 
+        [HttpGet("categoria/{idCategoria}")]
+        public async Task<ActionResult<Aperitivo>> GetAperitivoByCategoria(int idCategoria)
+        {
+            AperitivoService aperitivoService = new AperitivoService(_dbContext);
+
+            IEnumerable<Aperitivo> aperitivos = await aperitivoService.GetAperitivosByCategoria(idCategoria);
+
+            return Ok(aperitivos);
+        }
+
         [HttpPost]
         public async Task<ActionResult> CriarAperitivo(NovoAperitivo novoAperitivo)
         {

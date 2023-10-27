@@ -22,6 +22,11 @@ namespace FazAcontecerAPI.Services
             return await _dbContext.TbAperitivo.FirstOrDefaultAsync(p => p.Id == id);
         }
 
+        public async Task<IEnumerable<Aperitivo>> GetAperitivosByCategoria(int idCategoria)
+        {
+            return await _dbContext.TbAperitivo.Where(a => a.IdCategoria == idCategoria).ToListAsync();
+        }
+
         public async Task<Aperitivo> CriarAperitivo(Aperitivo aperitivo)
         {
             _dbContext.TbAperitivo.Add(aperitivo);
