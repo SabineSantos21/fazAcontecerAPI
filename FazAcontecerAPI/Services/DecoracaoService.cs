@@ -37,6 +37,8 @@ namespace FazAcontecerAPI.Services
             existingDecoracao.Quantidade = decoracao.Quantidade;
             existingDecoracao.Ativo = decoracao.Ativo;
             existingDecoracao.Data_modificacao = DateTime.Now;
+            existingDecoracao.Check = decoracao.Check;
+            existingDecoracao.Ativo = decoracao.Ativo;
 
             _dbContext.TbDecoracao.Update(existingDecoracao);
             await _dbContext.SaveChangesAsync();

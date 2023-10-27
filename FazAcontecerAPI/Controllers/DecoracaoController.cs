@@ -17,7 +17,7 @@ namespace FazAcontecerAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Usuario>>> GetDecoracoes(int idEvento)
+        public async Task<ActionResult<IEnumerable<Decoracao>>> GetDecoracoes(int idEvento)
         {
             DecoracaoService decoracaoService = new DecoracaoService(_dbContext);
 
@@ -50,9 +50,12 @@ namespace FazAcontecerAPI.Controllers
             decoracao.Nome = novoDecoracao.Nome;
             decoracao.Quantidade = novoDecoracao.Quantidade;
             decoracao.IdCategoria = novoDecoracao.IdCategoria;
+            decoracao.IdEvento = novoDecoracao.IdEvento;
+            decoracao.Preco_unidade = novoDecoracao.Preco_unidade;
             decoracao.Data_criacao = DateTime.Now;
             decoracao.Data_modificacao = DateTime.Now;
             decoracao.Ativo = true;
+            decoracao.Check = false;
 
             await decoracaoService.CriarDecoracao(decoracao);
 
@@ -69,6 +72,8 @@ namespace FazAcontecerAPI.Controllers
             decoracao.Preco_unidade = atualizarDecoracao.Preco_unidade;
             decoracao.Quantidade = atualizarDecoracao.Quantidade;
             decoracao.IdCategoria = atualizarDecoracao.IdCategoria;
+            decoracao.Check = atualizarDecoracao.Check;
+            decoracao.Ativo = atualizarDecoracao.Ativo;
 
             var existingDecoracao = await decoracaoService.GetDecoracaoById(id);
 
