@@ -18,7 +18,16 @@ namespace FazAcontecerAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
+
+            services.AddCors(options => options.AddPolicy("PolicyCors", builder => builder
+               .AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader()));
+
             services.AddControllers();
+
+
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(c =>
             {
@@ -66,6 +75,10 @@ namespace FazAcontecerAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("PolicyCors");
+
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 
