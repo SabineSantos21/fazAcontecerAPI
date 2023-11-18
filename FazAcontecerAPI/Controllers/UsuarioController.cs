@@ -44,19 +44,26 @@ namespace FazAcontecerAPI.Controllers
         [HttpPost]
         public async Task<ActionResult> CriarUsuario(NovoUsuario novoUsuario)
         {
-            UsuarioService usuarioService = new UsuarioService(_dbContext);
+            try
+            {
+                UsuarioService usuarioService = new UsuarioService(_dbContext);
 
-            Usuario usuario = new Usuario();
-            usuario.Nome = novoUsuario.Nome;
-            usuario.Email = novoUsuario.Email;
-            usuario.Senha = novoUsuario.Senha;
-            usuario.Data_criacao = DateTime.Now;
-            usuario.Data_modificacao = DateTime.Now;
-            usuario.Ativo = true;
+                Usuario usuario = new Usuario();
+                usuario.Nome = novoUsuario.Nome;
+                usuario.Email = novoUsuario.Email;
+                usuario.Senha = novoUsuario.Senha;
+                usuario.Data_criacao = DateTime.Now;
+                usuario.Data_modificacao = DateTime.Now;
+                usuario.Ativo = true;
 
-            await usuarioService.CriarUsuario(usuario);
+                await usuarioService.CriarUsuario(usuario);
 
-            return Ok();
+                return Ok(usuario);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
         }
 
         [HttpPut("{id}")]
