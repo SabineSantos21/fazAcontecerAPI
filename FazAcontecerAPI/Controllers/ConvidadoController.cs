@@ -51,14 +51,14 @@ namespace FazAcontecerAPI.Controllers
             convidado.Telefone = novoConvidado.Telefone;
             convidado.Email = novoConvidado.Email;
             convidado.IdEvento = novoConvidado.IdEvento;
-            convidado.Aceitou_convite = true;
             convidado.Data_criacao = DateTime.Now;
             convidado.Data_modificacao = DateTime.Now;
             convidado.Ativo = true;
+            convidado.Aceitou_convite = null;
 
-            await convidadoService.CriarConvidado(convidado);
+            Convidado convidadoResponse = await convidadoService.CriarConvidado(convidado);
 
-            return Ok();
+            return Ok(convidadoResponse);
         }
 
         [HttpPut("{id}")]
@@ -80,9 +80,9 @@ namespace FazAcontecerAPI.Controllers
                 return NotFound();
             }
 
-            await convidadoService.AtualizarConvidado(existingConvidado, convidado);
+            Convidado convidadoAtualizado = await convidadoService.AtualizarConvidado(existingConvidado, convidado);
 
-            return NoContent();
+            return Ok(convidadoAtualizado);
         }
 
         [HttpDelete("{id}")]

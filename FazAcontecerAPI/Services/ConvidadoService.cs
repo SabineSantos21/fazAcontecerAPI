@@ -34,7 +34,7 @@ namespace FazAcontecerAPI.Services
             return convidado;
         }
 
-        public async Task AtualizarConvidado(Convidado existingConvidado, Convidado convidado)
+        public async Task<Convidado> AtualizarConvidado(Convidado existingConvidado, Convidado convidado)
         {
             existingConvidado.Nome = convidado.Nome;
             existingConvidado.Aceitou_convite = convidado.Aceitou_convite;
@@ -46,6 +46,8 @@ namespace FazAcontecerAPI.Services
 
             _dbContext.TbConvidado.Update(existingConvidado);
             await _dbContext.SaveChangesAsync();
+
+            return existingConvidado;
         }
 
         public async Task DeletarConvidado(Convidado convidado)

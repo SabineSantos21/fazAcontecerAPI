@@ -21,7 +21,7 @@ namespace FazAcontecerAPI.Models
         public int IdEvento { get; set; }
 
         [JsonPropertyName("aceitou_convite")]
-        public bool Aceitou_convite { get; set; }
+        public bool? Aceitou_convite { get; set; }
 
         [JsonPropertyName("data_criacao")]
         public DateTime Data_criacao { get; set; }
@@ -63,6 +63,6 @@ namespace FazAcontecerAPI.Models
         public bool Ativo { get; set; }
 
         [JsonPropertyName("aceitou_convite")]
-        public bool Aceitou_convite { get; set; }
+        public bool? Aceitou_convite { get; set; }
     }
 }
