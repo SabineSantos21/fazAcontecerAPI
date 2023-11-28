@@ -35,7 +35,7 @@ namespace FazAcontecerAPI.Services
             return aperitivo;
         }
 
-        public async Task AtualizarAperitivo(Aperitivo existingAperitivo, Aperitivo aperitivo)
+        public async Task<Aperitivo> AtualizarAperitivo(Aperitivo existingAperitivo, Aperitivo aperitivo)
         {
             existingAperitivo.Nome = aperitivo.Nome;
             existingAperitivo.Preco_unidade = aperitivo.Preco_unidade;
@@ -46,6 +46,18 @@ namespace FazAcontecerAPI.Services
 
             _dbContext.TbAperitivo.Update(existingAperitivo);
             await _dbContext.SaveChangesAsync();
+
+            return existingAperitivo;
+        }
+
+        public async Task<Aperitivo> CheckAperitivo(Aperitivo aperitivo)
+        {
+            aperitivo.Check = true;
+
+            _dbContext.TbAperitivo.Update(aperitivo);
+            await _dbContext.SaveChangesAsync();
+
+            return aperitivo;
         }
 
         public async Task DeletarAperitivo(Aperitivo aperitivo)

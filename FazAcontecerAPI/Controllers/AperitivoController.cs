@@ -66,9 +66,9 @@ namespace FazAcontecerAPI.Controllers
             aperitivo.Ativo = true;
             aperitivo.Check = false;
 
-            await aperitivoService.CriarAperitivo(aperitivo);
+            Aperitivo aperitivoResponse = await aperitivoService.CriarAperitivo(aperitivo);
 
-            return Ok();
+            return Ok(aperitivoResponse);
         }
 
         [HttpPut("{id}")]
@@ -91,9 +91,26 @@ namespace FazAcontecerAPI.Controllers
                 return NotFound();
             }
 
-            await aperitivoService.AtualizarAperitivo(existingAperitivo, aperitivo);
+            Aperitivo aperitivoResponse = await aperitivoService.AtualizarAperitivo(existingAperitivo, aperitivo);
 
-            return NoContent();
+            return Ok(aperitivoResponse);
+        }
+
+        [HttpPut("Check")]
+        public async Task<IActionResult> PutAperitivo(int aperitivoId)
+        {
+            AperitivoService aperitivoService = new AperitivoService(_dbContext);
+
+            var existingAperitivo = await aperitivoService.GetAperitivoById(aperitivoId);
+
+            if (existingAperitivo == null)
+            {
+                return NotFound();
+            }
+            
+            Aperitivo aperitivoResponse = await aperitivoService.CheckAperitivo(existingAperitivo);
+
+            return Ok(aperitivoResponse);
         }
 
         [HttpDelete("{id}")]
@@ -110,7 +127,7 @@ namespace FazAcontecerAPI.Controllers
 
             await aperitivoService.DeletarAperitivo(aperitivo);
 
-            return NoContent();
+            return Ok();
         }
 
     }

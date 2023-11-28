@@ -5,6 +5,6 @@
     "\\FazAcontecerAPI\\Controllers",
     "\\FazAcontecerAPI\\Models"
   ],
-  "SelectedNode": "\\FazAcontecerAPI.sln",
+  "SelectedNode": "\\FazAcontecerAPI\\Controllers\\ConvidadoController.cs",
   "PreviewInSolutionExplorer": false
 }
