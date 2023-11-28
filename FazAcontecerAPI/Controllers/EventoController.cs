@@ -48,19 +48,20 @@ namespace FazAcontecerAPI.Controllers
 
             Evento evento = new Evento();
             evento.Nome = novoEvento.Nome;
-            evento.Data_evento = novoEvento.Data_evento;
-            evento.Horario = novoEvento.Horario;
+            evento.Data_evento = Convert.ToDateTime(novoEvento.Data_evento);
+            evento.Horario = Convert.ToDateTime(novoEvento.Horario);
             evento.Local_evento = novoEvento.Local_evento;
             evento.Observacao = novoEvento.Observacao;
+            evento.Descricao = novoEvento.Descricao;
             evento.Orcamento = novoEvento.Orcamento;
             evento.Data_criacao = DateTime.Now;
             evento.Data_modificacao = DateTime.Now;
             evento.Ativo = true;
             evento.id_usuario = novoEvento.Id_usuario;
 
-            await eventoService.CriarEvento(evento);
+            Evento eventoCriado = await eventoService.CriarEvento(evento);
 
-            return Ok();
+            return Ok(eventoCriado);
         }
 
         [HttpPut("{id}")]
@@ -70,10 +71,11 @@ namespace FazAcontecerAPI.Controllers
 
             Evento evento = new Evento();
             evento.Nome = atualizarEvento.Nome;
-            evento.Data_evento = atualizarEvento.Data_evento;
-            evento.Horario = atualizarEvento.Horario;
+            evento.Data_evento = Convert.ToDateTime(atualizarEvento.Data_evento);
+            evento.Horario = Convert.ToDateTime(atualizarEvento.Horario);
             evento.Local_evento = atualizarEvento.Local_evento;
             evento.Observacao = atualizarEvento.Observacao;
+            evento.Descricao = atualizarEvento.Descricao;
             evento.Orcamento = atualizarEvento.Orcamento;
             evento.Ativo = atualizarEvento.Ativo;
             evento.Data_modificacao = DateTime.Now;
@@ -85,9 +87,9 @@ namespace FazAcontecerAPI.Controllers
                 return NotFound();
             }
 
-            await eventoService.AtualizarEvento(existingEvento, evento);
+            Evento eventoAtualizado = await eventoService.AtualizarEvento(existingEvento, evento);
 
-            return NoContent();
+            return Ok(eventoAtualizado);
         }
 
         [HttpDelete("{id}")]

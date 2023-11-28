@@ -30,14 +30,22 @@ namespace FazAcontecerAPI.Services
             return evento;
         }
 
-        public async Task AtualizarEvento(Evento existingEvento, Evento evento)
+        public async Task<Evento> AtualizarEvento(Evento existingEvento, Evento evento)
         {
             existingEvento.Nome = evento.Nome;
+            existingEvento.Data_evento = Convert.ToDateTime(evento.Data_evento);
+            existingEvento.Horario = Convert.ToDateTime(evento.Horario);
+            existingEvento.Local_evento = evento.Local_evento;
+            existingEvento.Observacao = evento.Observacao;
+            existingEvento.Descricao = evento.Descricao;
+            existingEvento.Orcamento = evento.Orcamento;
             existingEvento.Ativo = evento.Ativo;
             existingEvento.Data_modificacao = DateTime.Now;
 
             _dbContext.TbEvento.Update(existingEvento);
             await _dbContext.SaveChangesAsync();
+
+            return evento;
         }
 
         public async Task DeletarEvento(Evento evento)

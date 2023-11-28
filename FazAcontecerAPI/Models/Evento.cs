@@ -51,10 +51,10 @@ namespace FazAcontecerAPI.Models
         public string? Nome { get; set; }
 
         [JsonPropertyName("data_evento")]
-        public DateTime Data_evento { get; set; }
+        public string Data_evento { get; set; }
 
         [JsonPropertyName("horario")]
-        public DateTime Horario { get; set; }
+        public string Horario { get; set; }
 
         [JsonPropertyName("local_evento")]
         public string? Local_evento { get; set; }
@@ -78,10 +78,10 @@ namespace FazAcontecerAPI.Models
         public string? Nome { get; set; }
 
         [JsonPropertyName("data_evento")]
-        public DateTime Data_evento { get; set; }
+        public string Data_evento { get; set; }
 
         [JsonPropertyName("horario")]
-        public DateTime Horario { get; set; }
+        public string Horario { get; set; }
 
         [JsonPropertyName("local_evento")]
         public string? Local_evento { get; set; }

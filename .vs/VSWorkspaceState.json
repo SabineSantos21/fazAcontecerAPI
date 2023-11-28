@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\FazAcontecerAPI",
-    "\\FazAcontecerAPI\\Controllers"
+    "\\FazAcontecerAPI\\Controllers",
+    "\\FazAcontecerAPI\\Models"
   ],
-  "SelectedNode": "\\FazAcontecerAPI\\Controllers\\UsuarioController.cs",
+  "SelectedNode": "\\FazAcontecerAPI.sln",
   "PreviewInSolutionExplorer": false
 }
