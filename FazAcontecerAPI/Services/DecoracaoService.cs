@@ -30,7 +30,7 @@ namespace FazAcontecerAPI.Services
             return decoracao;
         }
 
-        public async Task AtualizarDecoracao(Decoracao existingDecoracao, Decoracao decoracao)
+        public async Task<Decoracao> AtualizarDecoracao(Decoracao existingDecoracao, Decoracao decoracao)
         {
             existingDecoracao.Nome = decoracao.Nome;
             existingDecoracao.Preco_unidade = decoracao.Preco_unidade;
@@ -41,6 +41,16 @@ namespace FazAcontecerAPI.Services
             existingDecoracao.Ativo = decoracao.Ativo;
 
             _dbContext.TbDecoracao.Update(existingDecoracao);
+            await _dbContext.SaveChangesAsync();
+
+            return existingDecoracao;
+        }
+
+        public async Task CheckDecoracao(Decoracao decoracao)
+        {
+            decoracao.Check = true;
+
+            _dbContext.TbDecoracao.Update(decoracao);
             await _dbContext.SaveChangesAsync();
         }
 

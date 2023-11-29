@@ -57,9 +57,9 @@ namespace FazAcontecerAPI.Controllers
             decoracao.Ativo = true;
             decoracao.Check = false;
 
-            await decoracaoService.CriarDecoracao(decoracao);
+            Decoracao decoracaoNova = await decoracaoService.CriarDecoracao(decoracao);
 
-            return Ok();
+            return Ok(decoracaoNova);
         }
 
         [HttpPut("{id}")]
@@ -82,9 +82,26 @@ namespace FazAcontecerAPI.Controllers
                 return NotFound();
             }
 
-            await decoracaoService.AtualizarDecoracao(existingDecoracao, decoracao);
+            Decoracao decoracaoNova = await decoracaoService.AtualizarDecoracao(existingDecoracao, decoracao);
 
-            return NoContent();
+            return Ok(decoracaoNova);
+        }
+
+        [HttpPut("Check")]
+        public async Task<IActionResult> CheckDecoracao(int decoracaoId)
+        {
+            DecoracaoService decoracaoService = new DecoracaoService(_dbContext);
+
+            var existingDecoracao = await decoracaoService.GetDecoracaoById(decoracaoId);
+
+            if (existingDecoracao == null)
+            {
+                return NotFound();
+            }
+
+            await decoracaoService.CheckDecoracao(existingDecoracao);
+
+            return Ok();
         }
 
         [HttpDelete("{id}")]
@@ -101,7 +118,7 @@ namespace FazAcontecerAPI.Controllers
 
             await decoracaoService.DeletarDecoracao(decoracao);
 
-            return NoContent();
+            return Ok();
         }
 
     }
