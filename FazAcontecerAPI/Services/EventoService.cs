@@ -64,6 +64,7 @@ namespace FazAcontecerAPI.Services
             {
 
                 var saldo = evento.Orcamento;
+                ret.Itens = new List<ItemExtrato>();
 
                 AperitivoService aperitivoService = new AperitivoService(_dbContext);
                 List<Aperitivo> aperitivos = aperitivoService.GetAperitivos(idEvento).Result.Where(a => a.Check == true).ToList();
@@ -71,6 +72,12 @@ namespace FazAcontecerAPI.Services
                 foreach (var aperitivo in aperitivos)
                 {
                     saldo -= (aperitivo.Preco_unidade * aperitivo.Quantidade);
+                    ret.Itens.Add(new ItemExtrato
+                    {
+                        Descricao = aperitivo.Nome,
+                        Preco = aperitivo.Preco_unidade * aperitivo.Quantidade,
+                        Quantidade = aperitivo.Quantidade,
+                    });
                 }
 
                 DecoracaoService decoracaoService = new DecoracaoService(_dbContext);
@@ -79,11 +86,15 @@ namespace FazAcontecerAPI.Services
                 foreach (var decoracao in decoracoes)
                 {
                     saldo -= (decoracao.Preco_unidade * decoracao.Quantidade);
+                    ret.Itens.Add(new ItemExtrato
+                    {
+                        Descricao = decoracao.Nome,
+                        Preco = decoracao.Preco_unidade * decoracao.Quantidade,
+                        Quantidade = decoracao.Quantidade,
+                    });
                 }
 
                 ret.Saldo = saldo;
-                ret.Aperitivos = aperitivos;
-                ret.Decoracoes = decoracoes;
 
                 return ret;
             }

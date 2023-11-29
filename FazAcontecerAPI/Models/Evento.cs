@@ -104,11 +104,19 @@ namespace FazAcontecerAPI.Models
         [JsonPropertyName("saldo")]
         public decimal Saldo { get; set; }
 
-        [JsonPropertyName("aperitivos")]
-        public List<Aperitivo>? Aperitivos { get; set; }
+        [JsonPropertyName("itens")]
+        public List<ItemExtrato>? Itens { get; set; }
+    }
 
-        [JsonPropertyName("decoracoes")]
-        public List<Decoracao>? Decoracoes { get; set; }
+    public class ItemExtrato
+    {
+        [JsonPropertyName("descricao")]
+        public string? Descricao { get; set; }
 
+        [JsonPropertyName("quantidade")]
+        public int? Quantidade { get; set; }
+
+        [JsonPropertyName("preco")]
+        public decimal? Preco { get; set; }
     }
 }
