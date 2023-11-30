@@ -136,3 +136,6 @@ C:\Users\Sabine Freiman\Source\Repos\fazAcontecerAPI\FazAcontecerAPI\obj\Debug\n
 C:\Users\Sabine Freiman\Source\Repos\fazAcontecerAPI\FazAcontecerAPI\obj\Debug\net6.0\FazAcontecerAPI.pdb
 C:\Users\Sabine Freiman\Source\Repos\fazAcontecerAPI\FazAcontecerAPI\obj\Debug\net6.0\FazAcontecerAPI.genruntimeconfig.cache
 C:\Users\Sabine Freiman\Source\Repos\fazAcontecerAPI\FazAcontecerAPI\obj\Debug\net6.0\ref\FazAcontecerAPI.dll
+C:\Users\Sabine Freiman\Source\Repos\fazAcontecerAPI\FazAcontecerAPI\bin\Debug\net6.0\MailKit.dll
+C:\Users\Sabine Freiman\Source\Repos\fazAcontecerAPI\FazAcontecerAPI\bin\Debug\net6.0\MimeKit.dll
+C:\Users\Sabine Freiman\Source\Repos\fazAcontecerAPI\FazAcontecerAPI\bin\Debug\net6.0\BouncyCastle.Crypto.dll

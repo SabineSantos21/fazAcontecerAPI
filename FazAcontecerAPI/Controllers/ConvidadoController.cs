@@ -1,7 +1,10 @@
+using FazAcontecerAPI.Email;
 using FazAcontecerAPI.Models;
 using FazAcontecerAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using System.Net.Mail;
 
 namespace FazAcontecerAPI.Controllers
 {
@@ -10,10 +13,12 @@ namespace FazAcontecerAPI.Controllers
     public class ConvidadoController : ControllerBase
     {
         private readonly ConnectionDB _dbContext;
+        private readonly IOptions<EmailSettings> _emailSettings;
 
-        public ConvidadoController(ConnectionDB dbContext)
+        public ConvidadoController(ConnectionDB dbContext, IOptions<EmailSettings> emailSettings)
         {
             _dbContext = dbContext;
+            _emailSettings = emailSettings;
         }
 
         [HttpGet("idEvento")]
@@ -56,7 +61,34 @@ namespace FazAcontecerAPI.Controllers
             convidado.Ativo = true;
             convidado.Aceitou_convite = null;
 
+            EventoService eventoService = new EventoService(_dbContext);
+            Evento? evento = await eventoService.GetEventoById(convidado.IdEvento); 
+
             Convidado convidadoResponse = await convidadoService.CriarConvidado(convidado);
+            var link = "";
+
+            string mailMessage =
+                    "<center><table style='margin-left: auto; margin-right: auto; width: 50%; text-align: center; background-color: #fdfdfd;'>"
+                    + "<thead><tr><td style='height: 25px;'></td></tr>"
+                    + "<tr><td style='height: 25px;'><h1>FAZ ACONTECER</h1></tr>"
+                    + "<tr><td style='height: 25px;'></td></tr></thead>"
+
+                    + "<tbody><tr><td><div style='width: 80%; height: 1px; background-color: #777676; margin-left: auto; margin-right: auto;'></div></td></tr></tbody>"
+
+                    + "<tbody><tr><td><h3>Você recebeu um convite do evento " + evento?.Nome + "</h3></td></tr></tbody>"
+
+                    + "<tbody>"
+                    + "<tr id='button' style='margin-left:auto; margin-right:auto'><td style='padding: 20px 45px; text-align: left;'>" 
+                    + "<a href=\"" + link + "\" target=\"_blank\"" 
+                    + "style='text-decoration:none; color:#fff; text-transform:uppercase; font-weight:600; background-color:rgba(107, 108, 196, 1);" 
+                    + "border-radius:7px; padding: 10px 25px;' data-linkindex='1'>ACESSAR MEU CONVITE" 
+                    + "</a>"
+                    + "</td></tr></tbody>"
+
+                    + "</table></center>";
+
+            AuthMessageSender emailSender = new AuthMessageSender(_emailSettings);
+            await emailSender.SendEmailAsync(convidado.Email, "FazAcontecer - Convite", mailMessage);
 
             return Ok(convidadoResponse);
         }
