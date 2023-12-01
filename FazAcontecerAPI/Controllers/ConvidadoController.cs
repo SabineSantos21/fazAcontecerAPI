@@ -2,9 +2,7 @@ using FazAcontecerAPI.Email;
 using FazAcontecerAPI.Models;
 using FazAcontecerAPI.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using System.Net.Mail;
 
 namespace FazAcontecerAPI.Controllers
 {
