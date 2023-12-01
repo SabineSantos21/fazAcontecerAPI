@@ -1,6 +1,7 @@
 ﻿using FazAcontecerAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Org.BouncyCastle.Ocsp;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -54,6 +55,16 @@ namespace FazAcontecerAPI.Services
         {
             _dbContext.TbConvidado.Remove(convidado);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<Convidado> ResponderConvite(Convidado convidado, bool resposta)
+        {
+            convidado.Aceitou_convite = resposta;
+
+            _dbContext.TbConvidado.Update(convidado);
+            await _dbContext.SaveChangesAsync();
+
+            return convidado;
         }
     }
 }

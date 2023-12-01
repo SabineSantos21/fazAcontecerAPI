@@ -65,7 +65,7 @@ namespace FazAcontecerAPI.Controllers
             Evento? evento = await eventoService.GetEventoById(convidado.IdEvento); 
 
             Convidado convidadoResponse = await convidadoService.CriarConvidado(convidado);
-            var link = "";
+            var link = "http://127.0.0.1:5501/index.html?token=";
 
             string mailMessage =
                     "<center><table style='margin-left: auto; margin-right: auto; width: 50%; text-align: center; background-color: #fdfdfd;'>"
@@ -79,7 +79,7 @@ namespace FazAcontecerAPI.Controllers
 
                     + "<tbody>"
                     + "<tr id='button' style='margin-left:auto; margin-right:auto'><td style='padding: 20px 45px; text-align: left;'>" 
-                    + "<a href=\"" + link + "\" target=\"_blank\"" 
+                    + "<a href=\"" + link + convidado.Id + "\" target=\"_blank\"" 
                     + "style='text-decoration:none; color:#fff; text-transform:uppercase; font-weight:600; background-color:rgba(107, 108, 196, 1);" 
                     + "border-radius:7px; padding: 10px 25px;' data-linkindex='1'>ACESSAR MEU CONVITE" 
                     + "</a>"
@@ -132,6 +132,23 @@ namespace FazAcontecerAPI.Controllers
             await convidadoService.DeletarConvidado(convidado);
 
             return NoContent();
+        }
+
+        [HttpPut("ResponderConvite")]
+        public async Task<IActionResult> PutResponderConvite(int convidadoId, bool resposta)
+        {
+            ConvidadoService convidadoService = new ConvidadoService(_dbContext);
+            
+            var existingConvidado = await convidadoService.GetConvidadoById(convidadoId);
+
+            if (existingConvidado == null)
+            {
+                return NotFound();
+            }
+
+            Convidado convidadoAtualizado = await convidadoService.ResponderConvite(existingConvidado, resposta);
+
+            return Ok(convidadoAtualizado);
         }
 
     }
